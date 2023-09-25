@@ -11,22 +11,13 @@
     <header>
       <h1>InnfProg Oblig 2</h1>
       <button id="toggleMenu" aria-label="Open the menu">
-        Menu <img src="menuicon.png" aria-hidden="true" />
+        Menu <img src="menuicon.png" aria-hidden="true" alt="hambuger menu" />
+        <!--added in alt text for the image-->
       </button>
       <nav id="menu">
         <!-- Eksempel: oppbygging av meny -->
         <ul>
           <li><a href="index.html">Home</a></li>
-        </ul>
-        <!--Making the rest of the buttons for the navigation-->
-        <ul>
-          <li><a href="index.html">Test-1</a></li>
-        </ul>
-        <ul>
-          <li><a href="index.html">Test-2</a></li>
-        </ul>
-        <ul>
-          <li><a href="index.html">Test-3</a></li>
         </ul>
       </nav>
     </header>
@@ -98,12 +89,21 @@
       //Gå gjennom første nivå av menupoints-array
       menuPoints.map((category) => {
         //TODO: Forbered HTML med overskrift og listestart
+        menuHTML += "<h2>" + category.menuheader + "</h2>";
+        menuHTML += "<ul>";
         //TODO: Gå gjennom array på andre nivå (menulinks)
+        category.menulinks.forEach((link) => {
+          menuHTML +=
+            '<li><a href="' + link.url + '">' + link.menutext + "</a></li>";
+        });
         //TODO: For hver menulink: fyll menuHTML med listeelementer og link
         //TODO: Avslutt liste
+        menuHTML += "</ul>";
       });
 
       //TODO: Skriv ut HTML til <nav>:
+      const menuElement = document.getElementById("menu");
+      menuElement.innerHTML = menuHTML;
     </script>
   </body>
 </html>
